@@ -17,11 +17,11 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('db_driver')->isRequired()->end()
-                ->scalarNode('base_security_role')->defaultValue('IS_AUTHENTICATED_FULLY')->end()
-                ->scalarNode('base_path_to_redirect')->defaultValue('/')->end()
-                ->booleanNode('unique_vote')->defaultTrue()->end()
-                ->integerNode('max_value')->cannotBeEmpty()->defaultValue(5)->end()
+            ->scalarNode('db_driver')->isRequired()->end()
+            ->scalarNode('base_security_role')->defaultValue('IS_AUTHENTICATED_FULLY')->end()
+            ->scalarNode('base_path_to_redirect')->defaultValue('/')->end()
+            ->booleanNode('unique_vote')->defaultTrue()->end()
+            ->integerNode('max_value')->defaultValue(5)->end()
             ->end()
             ->append($this->buildModelConfiguration())
             ->append($this->buildServiceConfiguration())
@@ -38,14 +38,14 @@ class Configuration implements ConfigurationInterface
         $node
             ->isRequired()
             ->children()
-                ->scalarNode('rating')
-                    ->isRequired()
-                    ->cannotBeEmpty()
-                ->end()
-                ->scalarNode('vote')
-                    ->isRequired()
-                    ->cannotBeEmpty()
-                ->end()
+            ->scalarNode('rating')
+            ->isRequired()
+            ->cannotBeEmpty()
+            ->end()
+            ->scalarNode('vote')
+            ->isRequired()
+            ->cannotBeEmpty()
+            ->end()
             ->end()
         ;
 
@@ -60,12 +60,12 @@ class Configuration implements ConfigurationInterface
         $node
             ->addDefaultsIfNotSet()
             ->children()
-                ->arrayNode('manager')->addDefaultsIfNotSet()
-                    ->children()
-                        ->scalarNode('rating')->cannotBeEmpty()->defaultValue('dcs_rating.manager.rating.default')->end()
-                        ->scalarNode('vote')->cannotBeEmpty()->defaultValue('dcs_rating.manager.vote.default')->end()
-                    ->end()
-                ->end()
+            ->arrayNode('manager')->addDefaultsIfNotSet()
+            ->children()
+            ->scalarNode('rating')->cannotBeEmpty()->defaultValue('dcs_rating.manager.rating.default')->end()
+            ->scalarNode('vote')->cannotBeEmpty()->defaultValue('dcs_rating.manager.vote.default')->end()
+            ->end()
+            ->end()
             ->end()
         ;
 
